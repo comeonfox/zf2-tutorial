@@ -1,5 +1,6 @@
 <?php
 $title = $blogEntry->getArrayCopy()['title'];
+$id = $blogEntry->getArrayCopy()['id'];
 $this->headTitle($title);
 ?>
 <div class="row-fluid">
@@ -10,7 +11,13 @@ $this->headTitle($title);
     </div>
     <div class="span6">
         <div class="main">
-        <legend><?php echo $this->escapeHtml($title);?></legend>
+
+        <legend ><?php echo $this->escapeHtml($title);?>
+<span></span>
+    <a href="<?php echo $this->url('blog',
+    array('action'=>'edit', 'id'=> $id));?>">
+<i class="icon-pencil"></i></a>
+</legend>
         <?php echo $blogEntry->getArrayCopy()['body'];?>
         </div>
     </div>

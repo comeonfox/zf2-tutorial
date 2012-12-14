@@ -42,3 +42,4 @@ div.container a.brand {
 .main{
     min-height: 500px;
 }
+legend .inline{ display : inline; }

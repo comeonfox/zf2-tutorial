@@ -8,14 +8,15 @@ function array2str($array)
     $str = implode(' ', $array);
     return $str;
 }
-function getBrief($str, $needle='</brief>')
+function getBrief($str, $needle_s='<brief>', $needle_e='</brief>')
 {
-    $end = strpos($str, $needle);
+    $end = strpos($str, $needle_e);
+    $start = strpos($str, $needle_s)+strlen('<brief>');
     if($end === false){
         return array('string'=>$str,
                     'state'=>false);
     }else{
-        return array('string'=>substr($str, 0, $end),
+        return array('string'=>substr($str, $start, $end),
                     'state'=>true);
     }
 }
@@ -42,7 +43,11 @@ function getBrief($str, $needle='</brief>')
     $brief = getBrief($entry->getArrayCopy()['body']);
     echo $brief['string'];
     if($brief['state']){
-        echo "<a href='#'>>>></a>";
+        echo '<a href="'.
+        $this->url('blog',
+                    array('action'=>'read',
+                    'id'=>$entry->getArrayCopy()['id'])).
+            '"> >>></a>';
     }
 ?>
 </td>
