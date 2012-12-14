@@ -7,7 +7,7 @@ return array(
     ),
     'controllers' => array(
         'invokables' => array(
-            'zfcuser' => 'ZfcUser\Controller\UserController',
+            'zfcuser' => 'ZfcUser\Controller\ZfcUserController',
         ),
     ),
     'controller_plugins' => array(
@@ -26,7 +26,7 @@ return array(
                 'type' => 'Literal',
                 'priority' => 1000,
                 'options' => array(
-                    'route' => '/user',
+                    'route' => '/zfcuser',
                     'defaults' => array(
                         'controller' => 'zfcuser',
                         'action'     => 'index',

@@ -1,5 +1,5 @@
 <?php
-//Footnotes: 
+//Footnotes:
 //1. m of p : member function of the parent class,
 //   AbstractActionController here.
 namespace Album\Controller;
@@ -71,7 +71,7 @@ class AlbumController extends AbstractActionController
 			}
 		}
 		return array('form' => $form,
-					 'id' => $id, 
+					 'id' => $id,
 					 );
 	}
 	public function deleteAction()

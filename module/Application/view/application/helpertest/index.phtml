@@ -1,0 +1,14 @@
+<div id="demo">
+<h1> Show the usage of various view helpers: </h1>
+<?php
+    echo $this->url('album');
+    echo $this->htmlList(array("foo","bar"));
+    echo $this->basePath('style.css');
+    echo $this->partial('layout/partial.phtml',array(
+        'from' => 'Ohio',
+        'subject' => 'test'));
+    echo $this->partial('layout/partial.phtml',array(
+        'from' => 'Washington DC',
+        'subject' => 'greetings'));
+?>
+</div>

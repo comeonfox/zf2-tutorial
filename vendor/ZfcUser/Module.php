@@ -53,6 +53,11 @@ class Module implements
                     $viewHelper->setLoginForm($locator->get('zfcuser_login_form'));
                     return $viewHelper;
                 },
+                'zfcUserSpecial' => function($sm) {
+                    $locator = $sm->getServiceLocator();
+                    $viewHelper = new View\Helper\ZfcUserSpecial;
+                    return $viewHelper;
+                },
             ),
         );
 

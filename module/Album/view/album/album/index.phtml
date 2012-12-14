@@ -2,9 +2,12 @@
 $title = 'My albums';
 $this->headTitle($title);
 ?>
-<h1><?php echo $this->escapeHtml($title); ?></h1>
-<p><a href="<?php echo $this->url('album', array(
-         'action'=>'add'));?>">Add new album</a></p>
+<H1><?php echo $this->escapeHtml($title); ?></H1>
+<a href="<?php echo $this->url('zfcuser/logout') ?>">[Log out]</a>
+<p>
+<a href="<?php echo $this->url('album', array(
+    'action'=>'add'));?>">Add new album</a>
+</p>
 <table class="table">
 <tr>
      <th>Title</th>

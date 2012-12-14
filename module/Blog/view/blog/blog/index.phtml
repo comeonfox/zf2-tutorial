@@ -1,0 +1,53 @@
+<?php
+$title = 'My blog';
+$this->headTitle($title);
+
+//self-made view helpers, not registered yet.
+function array2str($array)
+{
+    $str = implode(' ', $array);
+    return $str;
+}
+function getBrief($str, $needle='</brief>')
+{
+    $end = strpos($str, $needle);
+    if($end === false){
+        return array('string'=>$str,
+                    'state'=>false);
+    }else{
+        return array('string'=>substr($str, 0, $end),
+                    'state'=>true);
+    }
+}
+?>
+
+<div class="row-fluid">
+<div class="span4">
+<p> Place Holder:
+    side bar here.
+</p>
+</div>
+<div class="span6">
+    <H1><?php echo $this->escapeHtml($title);?></H1>
+    <a href="<?php echo $this->url('blog', array('action'=>'add')); ?>">[+]</a>
+<table class="table">
+<?php foreach($entries as $entry) : ?>
+<tr><td><h3><a href="
+<?php echo $this->url('blog',
+                    array('action'=>'read',
+                    'id'=>$entry->getArrayCopy()['id']));?>
+"><?php echo $this->escapeHtml($entry->getArrayCopy()['title']);?></a></h3>
+<br\>
+<?php
+    $brief = getBrief($entry->getArrayCopy()['body']);
+    echo $brief['string'];
+    if($brief['state']){
+        echo "<a href='#'>>>></a>";
+    }
+?>
+</td>
+</tr>
+<?php endforeach; ?>
+</table>
+</div><!--end of span10-->
+</div>

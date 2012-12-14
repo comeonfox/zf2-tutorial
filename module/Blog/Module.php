@@ -1,15 +1,8 @@
 <?php
-/**
- * Zend Framework (http://framework.zend.com/)
- *
- * @link      http://github.com/zendframework/ZendSkeletonApplication for the canonical source repository
- * @copyright Copyright (c) 2005-2012 Zend Technologies USA Inc. (http://www.zend.com)
- * @license   http://framework.zend.com/license/new-bsd New BSD License
- */
 
-namespace Album;
+namespace Blog;
 
-use Album\Model\AlbumTable;
+use Blog\Model\BlogTable;
 use Zend\ModuleManager\Feature\AutoloaderProviderInterface,
     Zend\ModuleManager\Feature\ConfigProviderInterface,
     Zend\ModuleManager\Feature\ServiceProviderInterface;
@@ -37,14 +30,15 @@ class Module implements
     }
 	public function getServiceConfig()
 	{
-    return array(
-        'factories' => array(
-            'Album\Model\AlbumTable' => function($sm) {
-                $dbAdapter = $sm->get('Zend\Db\Adapter\Adapter');
-                $table = new AlbumTable($dbAdapter);
-                return $table;
-					},
-				),
-		  );
+        return array(
+            'factories' => array(
+                'Blog\Model\BlogTable' => function($sm) {
+                    $dbAdapter = $sm->get('Zend\Db\Adapter\Adapter');
+                    $table = new BlogTable($dbAdapter);
+                    return $table;
+                        },
+                    ),
+              );
 	}
 }
+
