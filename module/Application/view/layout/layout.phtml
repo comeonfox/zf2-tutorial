@@ -11,17 +11,20 @@
     <?php echo $this->headLink(array('rel' => 'shortcut icon', 'type' => 'image/vnd.microsoft.icon', 'href' => $this->basePath() . '/images/favicon.ico'))
                     ->appendStylesheet($this->basePath() . '/css/bootstrap.min.css')
                     ->appendStylesheet($this->basePath() . '/css/style.css')
+                    ->appendStylesheet($this->basePath() . '/css/prettify.css')
                     ->appendStylesheet($this->basePath() . '/css/bootstrap-responsive.min.css') ?>
+
 
     <!-- Scripts -->
     <?php echo $this->headScript()->appendFile($this->basePath() . '/js/html5.js', 'text/javascript', array('conditional' => 'lt IE 9',))
     ->appendFile($this->basePath() . '/js/jquery-1.7.2.min.js')
     ->appendFile($this->basePath() . '/js/bootstrap.js')
+    ->appendFile($this->basePath() . '/js/prettify.js')
 ?>
 
   </head>
 
-  <body>
+  <body onload="prettyPrint()">
 
     <div class="navbar navbar-fixed-top">
       <div class="navbar-inner">
