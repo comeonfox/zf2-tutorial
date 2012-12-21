@@ -30,15 +30,19 @@ class BlogTable extends AbstractTableGateway
     }
     public function saveBlog(BlogEntry $blog)
     {
+        $current_t = date("Y-m-d H:i:s");
         $data = $blog->getArrayCopy();
+        $data['author']='LiuYuan';
         $id = (int)$data['id'];
         if($id == 0){
-            $data['author']='LiuYuan';
+            $data['time_created']=$current_t;
+            $data['time_altered']=$current_t;
             $this->insert($data);
         }
         else
         {
             if($this->getBlog($id)){
+                $data['time_altered'] = $current_t;
                 $this->update($data, array('id' =>$id));
             }
             else{

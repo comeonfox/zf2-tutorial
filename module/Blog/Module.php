@@ -40,5 +40,15 @@ class Module implements
                     ),
               );
 	}
+    public function getViewHelperConfig()
+    {
+        return array(
+            'factories' => array(
+                'blogTidy'=>function($sm){
+                    $viewHelper = new \Blog\View\Helper\TidyHtml;
+                   return $viewHelper;
+                }
+        ));
+    }
 }
 

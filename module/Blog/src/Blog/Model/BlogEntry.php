@@ -9,10 +9,10 @@ class BlogEntry implements InputFilterAwareInterface
 {
     protected $id;
     protected $title;
-    protected $body='';
+    protected $body;
     protected $time_created;
     protected $time_altered;
-    protected $comment_count=0;
+    protected $comment_count;
     protected $author;
 
     private $inputFilter;
@@ -28,10 +28,10 @@ class BlogEntry implements InputFilterAwareInterface
         $this->id = (isset($data['id'])) ? $data['id'] : null;
         $this->title = (isset($data['title'])) ? $data['title'] : null;
         $this->body = (isset($data['body'])) ? $data['body'] : null;
-        $this->time_created = (isset($data['created'])) ? $data['time_created'] : null;
-        $this->time_altered = (isset($data['altered'])) ? $data['time_altered'] : null;
-        $this->comment_count = (isset($data['comments'])) ? $data['comment_count'] : null;
         $this->author = (isset($data['author'])) ? $data['author'] : null;
+        $this->time_altered = (isset($data['time_altered'])) ? $data['time_altered'] : null;
+        $this->time_created = (isset($data['time_created'])) ? $data['time_created'] : null;
+        $this->comment_count = (isset($data['comment_count'])) ? $data['comment_count'] : null;
     }
     public function setInputFilter(InputFilterInterface $inputFilter)
     {

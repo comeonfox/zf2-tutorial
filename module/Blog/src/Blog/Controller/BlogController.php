@@ -36,7 +36,6 @@ class BlogController extends AbstractActionController
             $blog = new BlogEntry();
             $form->setInputFilter($blog->getInputFilter());
             $form->setData($request->getPost());
-            // spare the validation part for now.
             if ($form->isValid()){
                 $blog->exchangeArray($form->getData());
                 $this->getBlogTable()->saveBlog($blog);

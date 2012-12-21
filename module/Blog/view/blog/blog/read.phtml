@@ -1,4 +1,8 @@
 <?php
+$allowedTags = array('a','b','h1','h2','h3','h4','h5', 'h6',
+    'code','pre', 'img', 'section','p','em','i');
+$tagStripper = new Zend\Filter\StripTags(array('allowTags'
+    => $allowedTags));
 $title = $blogEntry->getArrayCopy()['title'];
 $id = $blogEntry->getArrayCopy()['id'];
 $this->headTitle($title);
@@ -10,15 +14,19 @@ $this->headTitle($title);
     </p>
     </div>
     <div class="span6">
+        <div class="entry-wrapper">
+        <legend><?php echo $this->escapeHtml($title);?>
+        <span></span>
+            <a href="<?php echo $this->url('blog',
+            array('action'=>'edit', 'id'=> $id));?>">
+            <i class="icon-pencil"></i></a>
+        </legend>
         <div class="main">
+        <?php
+             echo $this->blogTidy($tagStripper($blogEntry->getArrayCopy()['body']));
+        ?>
 
-        <legend ><?php echo $this->escapeHtml($title);?>
-<span></span>
-    <a href="<?php echo $this->url('blog',
-    array('action'=>'edit', 'id'=> $id));?>">
-<i class="icon-pencil"></i></a>
-</legend>
-        <?php echo $blogEntry->getArrayCopy()['body'];?>
+        </div>
         </div>
     </div>
 </div>
